@@ -6,6 +6,7 @@ library(car)
 library(GGally)
 library(ellipse)
 library(lattice)
+library(ROCR)
 rm(list=ls())
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,13 +92,3 @@ ggpairs(mostra.df[,c(2,8:11)],color='label', alpha=0.4)
 names(mostra.df)=feat_names_short
 qplot(V23, fill=label, data=mostra.df) + facet_wrap(~label, ncol=2)
 ggplot(mostra.df, aes(x=V23, fill=label)) + geom_density(alpha=.3) 
-
-
-
-
-
-
-
-
-
-
