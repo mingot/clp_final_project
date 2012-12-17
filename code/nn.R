@@ -5,4 +5,5 @@ pred = predict(nn.mod, test.df)
 error = abs(pred - test.df$label)
 sum(error)/nrow(test.df)
 
-colisio!!
+colisio 3!!
+
