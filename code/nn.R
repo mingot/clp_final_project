@@ -4,3 +4,5 @@ sum(nn.mod$residuals)/nrow(train.df)
 pred = predict(nn.mod, test.df)
 error = abs(pred - test.df$label)
 sum(error)/nrow(test.df)
+
+colisio!!
