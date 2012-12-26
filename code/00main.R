@@ -1,12 +1,8 @@
-library(kernlab)
-library(nnet)
-library(rpart)
-library(ggplot2)
-library(car)
-library(GGally)
-library(ellipse)
-library(lattice)
-library(ROCR)
+library(ggplot2) # ggplot2, qplot
+library(GGally) # ggpairs
+library(ellipse) # plotcorr
+library(sna) # plot.sociomatrix
+library(caret) # findCorrelation
 rm(list=ls())
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,31 +60,22 @@ mostra.df = f_pe[sample(1:nrow(f_pe),1000),]
 names(mostra.df) = feat_names_short
 
 # Scatter plot de parelles de variables senzill
-pairs(mostra.df[,c(2,5:10)])
+pairs(mostra.df[,c(2,18:21,23,29)])
 
 # Mesura de l'autocorrelacio entre variables mitjancant elipses
-plotcorr(as.matrix(cor(mostra.df[,10:30])))
+plotcorr(as.matrix(cor(mostra.df[,3:10])))
 
-names(mostra.df) = feat_names
-scatterplotMatrix(~spatial_shape_feature_1 + spatial_shape_feature_2 + spatial_shape_feature_3|factor(label), 
-                  data=mostra.df)
+# Plot de la matriu d'autocorrelació segons intensitats
+plot.sociomatrix(cor(mostra.df[,4:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALSE)
 
+# Borrem variables autocorrelacionades
+dat = mostra.df[-c(1:2)]
+corFeat = findCorrelation(cor(dat), cutoff=0.8, verbose=TRUE)
+mostra.df = mostra.df[,-(corFeat+2)]
 
-# eina definitiva per l'analisi exploratoria de parelles de variables
-ggpairs(mostra.df[,c(2,8:11)],color='label', alpha=0.4)
+ggpairs(mostra.df, columns=10:15)
 
-# # Diamonds example of the use of ggpairs
-# pm <- ggpairs(
-#   diamonds[,1:3],
-#   upper = list(continuous = "density", combo = "box"),
-#   lower = list(continuous = "points", combo = "dot"),
-#   color = "cut",
-#   title = "Diamonds"
-# )
-# pm
-
-
-# Comparacio de funcions de dencsitat
+# Comparacio de funcions de dencsitat per una variable donada
 names(mostra.df)=feat_names_short
 qplot(V23, fill=label, data=mostra.df) + facet_wrap(~label, ncol=2)
 ggplot(mostra.df, aes(x=V23, fill=label)) + geom_density(alpha=.3) 

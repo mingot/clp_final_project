@@ -1,3 +1,7 @@
+library(rpart) # rpart
+library(ROCR)
+
+
 # grow tree
 tree.mod = rpart(label ~ . - PatientID,
                  method="class", data=train.df)

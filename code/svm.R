@@ -1,3 +1,6 @@
+library(ROCR)
+
+
 svm.mod = ksvm(label ~ . - PatientID, data = train.df, 
                type = "C-bsvc", 
                kernel = "rbfdot", 
