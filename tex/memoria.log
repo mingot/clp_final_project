@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.20)  27 DEC 2012 11:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.20)  27 DEC 2012 20:35
 entering extended mode
  %&-line parsing enabled.
 **memoria.tex
@@ -279,30 +279,30 @@ LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
-))))
-No file memoria.aux.
+)))) (./memoria.aux)
 \openout1 = `memoria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
+
 (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Info: Redefining \l on input line 14.
-LaTeX Info: Redefining \L on input line 14.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Info: Redefining \l on input line 17.
+LaTeX Info: Redefining \L on input line 17.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
@@ -323,44 +323,83 @@ File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 16.
+LaTeX Font Info:    Try loading font information for U+msa on input line 21.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 16.
+LaTeX Font Info:    Try loading font information for U+msb on input line 21.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for T1+aett on input line 21.
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./memoria.toc)
+\tf@toc=\write4
+\openout4 = `memoria.toc'.
+
+ [2]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 34.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-<memoria-002.pdf, id=2, 433.62pt x 433.62pt>
-File: memoria-002.pdf Graphic file (type pdf)
- <use memoria-002.pdf> [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./memoria-002.pdf>] (./mem
-oria.aux) ) 
+LaTeX Warning: Reference `fig:autoc' on page 3 undefined on input line 52.
+
+
+LaTeX Warning: Reference `fig:autoc_clean' on page 3 undefined on input line 52
+.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--53
+
+ []
+
+<memoria-autoc.pdf, id=15, 433.62pt x 433.62pt>
+File: memoria-autoc.pdf Graphic file (type pdf)
+ <use memoria-autoc.pdf>
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 58--59
+[][] 
+ []
+
+<memoria-autoc_clean.pdf, id=16, 433.62pt x 433.62pt>
+File: memoria-autoc_clean.pdf Graphic file (type pdf)
+
+<use memoria-autoc_clean.pdf>
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 65--66
+[][] 
+ []
+
+[3] [4 <./memoria-autoc.pdf>] [5 <./memoria-autoc_clean.pdf>] [6]
+(./memoria.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4156 strings out of 495061
- 52915 string characters out of 1182621
- 104778 words of memory out of 3000000
- 7247 multiletter control sequences out of 15000+50000
- 21907 words of font info for 62 fonts, out of 3000000 for 9000
+ 4204 strings out of 495061
+ 53450 string characters out of 1182621
+ 108792 words of memory out of 3000000
+ 7263 multiletter control sequences out of 15000+50000
+ 39609 words of font info for 90 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 35i,6n,24p,327b,589s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmsltt10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmtt10.pfb>
-Output written on memoria.pdf (1 page, 105664 bytes).
+ 35i,6n,24p,860b,589s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsltt10.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on memoria.pdf (6 pages, 266342 bytes).
 PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
+ 70 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 10 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 15 words of extra memory for PDF output out of 10000 (max. 10000000)
 

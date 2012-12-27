@@ -106,7 +106,7 @@ plot.sociomatrix(cor(mostra.df[,2:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALS
 # Borrem variables autocorrelacionades (segons cutoff d'autocorrelacio)
 dat = mostra.df[-1]
 corFeat9 = findCorrelation(cor(dat), cutoff=0.9, verbose=FALSE) + 1
-corFeat8 = findCorrelation(cor(dat), cutoff=0.8, verbose=FALSE) + 1
+corFeat8 = findCorrelation(cor(dat), cutoff=0.85, verbose=FALSE) + 1
 mostra.df = mostra.df[,-(corFeat8)]
 
 # Debug de les variables eliminades amb quines es trobaven correlacionades
