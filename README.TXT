@@ -6,7 +6,9 @@ Repartició de tasques:
 
 - Visualització de dades: scatter plots, gaussianitat --> conèixer les variables (Josep Marc)
 
-- Reducció dimensionalitat: PCA, ICA, MDA (Biel)
+- Reducció dimensionalitat: 
+    + Feature projection: PCA, ICA, MDA (Biel)
+    + Feature selection: filters, classification wrappers (Mingot)
 
 - Aprenentatge: 
 *Discriminants lineals i quadràtics (Josep Marc)

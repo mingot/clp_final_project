@@ -15,12 +15,31 @@ feat_names = read.table("data/KDDPEfeatureNames.txt")
 feat_names = feat_names$V1
 feat_names = gsub(' ', '_', tolower(feat_names))# Substituim els espais per underscores en els noms de les variables
 feat_names_short = names(f_pe) # guardem les velles pq son curtes i ens poden servir
-feat_names_short[1:5]=c("PatientID","label","x","y","z")
 names(f_pe) = feat_names
+
+# Eliminem patientid com a variable
+f_pe = f_pe[2:ncol(f_pe)]
+feat_names_short[1:4]=c("label","x","y","z")
+feat_names_short = feat_names_short[1:(length(feat_names_short)-1)]
 
 f_pe[f_pe$label!=0,"label"] = 1 # posem labels a 1 de cada candidat
 f_pe$label = factor(f_pe$label) # fiquem com a factor
 
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Noms de grups de variables
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+v_pos = 2:4 
+v_spat_shape = 6:8
+v_simp_intens = 13:16
+v_neigh = 17:20
+v_neigh_intens = 21:38
+v_shape = 39:64
+v_anatonical = 65:68
+v_neigh_feat_tres = 69:70
+v_intens_contrast = 71:75
+v_shape_neigh = 76:109
+v_dgfr = 111:117 
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # K-fold cross-validation
@@ -54,7 +73,7 @@ index_cv = f_K_fold(nrow(f_pe),5)
 # Data Visualization
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Analisi exploratoria. Objectiu: veure relacio entre variables i la seva relacio
-# amb la variable objectiu
+# amb la variable objectiu. Procediment: visualitzacio de variables 2 a 2.
 
 mostra.df = f_pe[sample(1:nrow(f_pe),1000),]
 names(mostra.df) = feat_names_short
@@ -63,19 +82,24 @@ names(mostra.df) = feat_names_short
 pairs(mostra.df[,c(2,18:21,23,29)])
 
 # Mesura de l'autocorrelacio entre variables mitjancant elipses
-plotcorr(as.matrix(cor(mostra.df[,3:10])))
+plotcorr(as.matrix(cor(mostra.df[,2:50])))
 
 # Plot de la matriu d'autocorrelació segons intensitats
-plot.sociomatrix(cor(mostra.df[,4:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALSE)
+plot.sociomatrix(cor(mostra.df[,2:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALSE)
 
-# Borrem variables autocorrelacionades
-dat = mostra.df[-c(1:2)]
-corFeat = findCorrelation(cor(dat), cutoff=0.8, verbose=TRUE)
-mostra.df = mostra.df[,-(corFeat+2)]
+# Borrem variables autocorrelacionades (segons cutoff d'autocorrelacio)
+dat = mostra.df[-1]
+corFeat9 = findCorrelation(cor(dat), cutoff=0.9, verbose=FALSE) + 1
+corFeat8 = findCorrelation(cor(dat), cutoff=0.8, verbose=FALSE) + 1
+mostra.df = mostra.df[,-(corFeat9)]
 
-ggpairs(mostra.df, columns=10:15)
+var_num = 22
+corMat = cor(dat)
+corMat[which(abs(corMat[,var_num-1])>0.8),var_num-1]
+
+ggpairs(mostra.df[,1:20], colour='label')
 
 # Comparacio de funcions de dencsitat per una variable donada
-names(mostra.df)=feat_names_short
+names(mostra.df) = feat_names_short[2:length(feat_names_short)]
 qplot(V23, fill=label, data=mostra.df) + facet_wrap(~label, ncol=2)
 ggplot(mostra.df, aes(x=V23, fill=label)) + geom_density(alpha=.3) 

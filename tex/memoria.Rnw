@@ -1,0 +1,36 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[catalan]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+
+\title{Memòria pràctica 8}
+\author{Josep Marc Mingot, Gabriel Reines}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+
+
+
+In this example we embed parts of the examples from the
+\texttt{kruskal.test} help page into a \LaTeX{} document:
+<<>>=
+data(airquality)
+@
+which shows that the location parameter of the Ozone 
+distribution varies significantly from month to month. Finally we
+include a boxplot of the data:
+
+\begin{center}
+<<fig=TRUE,echo=FALSE>>=
+ggpairs(mostra.df[,c(1,v_spat_shape-1,5)], colour='label')
+@
+\end{center}
+
+
+
+\end{document}
