@@ -87,19 +87,29 @@ plotcorr(as.matrix(cor(mostra.df[,2:50])))
 # Plot de la matriu d'autocorrelació segons intensitats
 plot.sociomatrix(cor(mostra.df[,2:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALSE)
 
+ggpairs(mostra.df[,1:20], colour='label')
+
+# Comparacio de funcions de dencsitat per una variable donada
+names(mostra.df) = feat_names_short
+qplot(V14, fill=label, data=mostra.df) + facet_wrap(~label, ncol=2)
+ggplot(mostra.df, aes(x=V14, fill=label)) + geom_density(alpha=.3) 
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Correlation clean
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Objectiu: limpiar les variables que estan autocorrelacionades
+# localitzar quines ho estan.
+
+# Visualització de la matriu d'autocorrelacio
+plot.sociomatrix(cor(mostra.df[,2:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALSE)
+
 # Borrem variables autocorrelacionades (segons cutoff d'autocorrelacio)
 dat = mostra.df[-1]
 corFeat9 = findCorrelation(cor(dat), cutoff=0.9, verbose=FALSE) + 1
 corFeat8 = findCorrelation(cor(dat), cutoff=0.8, verbose=FALSE) + 1
-mostra.df = mostra.df[,-(corFeat9)]
+mostra.df = mostra.df[,-(corFeat8)]
 
-var_num = 22
+# Debug de les variables eliminades amb quines es trobaven correlacionades
+var_num = 61
 corMat = cor(dat)
-corMat[which(abs(corMat[,var_num-1])>0.8),var_num-1]
-
-ggpairs(mostra.df[,1:20], colour='label')
-
-# Comparacio de funcions de dencsitat per una variable donada
-names(mostra.df) = feat_names_short[2:length(feat_names_short)]
-qplot(V23, fill=label, data=mostra.df) + facet_wrap(~label, ncol=2)
-ggplot(mostra.df, aes(x=V23, fill=label)) + geom_density(alpha=.3) 
+corMat[which(abs(corMat[,var_num-1])>0.9),var_num-1]

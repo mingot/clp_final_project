@@ -22,3 +22,9 @@ Repartició de tasques:
 
 code: Codi Font R
 data: original data de KDD CUP
+
+BIBLIOGRAFIA
+* LDA feature selection
+http://arxiv.org/pdf/0903.2003v4.pdf
+
+
