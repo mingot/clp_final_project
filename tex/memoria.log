@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.20)  27 DEC 2012 20:35
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.20)  29 DEC 2012 22:38
 entering extended mode
  %&-line parsing enabled.
 **memoria.tex
@@ -323,12 +323,12 @@ File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+LaTeX Font Info:    Try loading font information for U+msa on input line 22.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+LaTeX Font Info:    Try loading font information for U+msb on input line 22.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -339,27 +339,36 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 \openout4 = `memoria.toc'.
 
  [2]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 34.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 44.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 
-LaTeX Warning: Reference `fig:autoc' on page 3 undefined on input line 52.
+LaTeX Warning: Reference `fig:pos' on page 3 undefined on input line 47.
 
 
-LaTeX Warning: Reference `fig:autoc_clean' on page 3 undefined on input line 52
-.
+LaTeX Warning: Reference `fig:top_var' on page 3 undefined on input line 50.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--53
+Underfull \hbox (badness 10000) in paragraph at lines 41--51
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--51
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--51
 
  []
 
 <memoria-autoc.pdf, id=15, 433.62pt x 433.62pt>
 File: memoria-autoc.pdf Graphic file (type pdf)
  <use memoria-autoc.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 58--59
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 55--56
 [][] 
  []
 
@@ -367,39 +376,87 @@ Overfull \hbox (16.34999pt too wide) in paragraph at lines 58--59
 File: memoria-autoc_clean.pdf Graphic file (type pdf)
 
 <use memoria-autoc_clean.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 65--66
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 62--64
 [][] 
  []
 
-[3] [4 <./memoria-autoc.pdf>] [5 <./memoria-autoc_clean.pdf>] [6]
-(./memoria.aux)
+[3] [4 <./memoria-autoc.pdf>] [5 <./memoria-autoc_clean.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 94--98
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--130
+
+ []
+
+[6] <memoria-da_roc.pdf, id=37, 433.62pt x 433.62pt>
+File: memoria-da_roc.pdf Graphic file (type pdf)
+ <use memoria-da_roc.pdf>
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 156--157
+[][] 
+ []
+
+<memoria-top_var_da.pdf, id=38, 433.62pt x 433.62pt>
+File: memoria-top_var_da.pdf Graphic file (type pdf)
+
+<use memoria-top_var_da.pdf>
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 163--164
+[][] 
+ []
+
+<memoria-lda_var_selec.pdf, id=39, 433.62pt x 433.62pt>
+File: memoria-lda_var_selec.pdf Graphic file (type pdf)
+
+<use memoria-lda_var_selec.pdf>
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 170--171
+[][] 
+ []
+
+[7] [8 <./memoria-da_roc.pdf>] [9 <./memoria-top_var_da.pdf>] [10 <./memoria-ld
+a_var_selec.pdf>] [11] (./memoria.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 4204 strings out of 495061
- 53450 string characters out of 1182621
- 108792 words of memory out of 3000000
- 7263 multiletter control sequences out of 15000+50000
- 39609 words of font info for 90 fonts, out of 3000000 for 9000
+ 4222 strings out of 495061
+ 53968 string characters out of 1182621
+ 111841 words of memory out of 3000000
+ 7283 multiletter control sequences out of 15000+50000
+ 36963 words of font info for 85 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 35i,6n,24p,860b,589s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,7n,24p,1401b,589s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/
 type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public
 /amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
-/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></
-usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsltt10.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on memoria.pdf (6 pages, 266342 bytes).
+/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on memoria.pdf (11 pages, 244189 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
+ 101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 15 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 30 words of extra memory for PDF output out of 10000 (max. 10000000)
 

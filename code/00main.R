@@ -40,6 +40,7 @@ v_neigh_feat_tres = 69:70
 v_intens_contrast = 71:75
 v_shape_neigh = 76:109
 v_dgfr = 111:117 
+v_top = c(14,51,12,17,114,9,8) # variables més significatives segons CAT score de LDA
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # K-fold cross-validation
@@ -87,7 +88,8 @@ plotcorr(as.matrix(cor(mostra.df[,2:50])))
 # Plot de la matriu d'autocorrelació segons intensitats
 plot.sociomatrix(cor(mostra.df[,2:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALSE)
 
-ggpairs(mostra.df[,1:20], colour='label')
+ggpairs(mostra.df[,c(1,v_top)], colour='label')
+
 
 # Comparacio de funcions de dencsitat per una variable donada
 names(mostra.df) = feat_names_short
@@ -100,14 +102,16 @@ ggplot(mostra.df, aes(x=V14, fill=label)) + geom_density(alpha=.3)
 # Objectiu: limpiar les variables que estan autocorrelacionades
 # localitzar quines ho estan.
 
-# Visualització de la matriu d'autocorrelacio
-plot.sociomatrix(cor(mostra.df[,2:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALSE)
+
 
 # Borrem variables autocorrelacionades (segons cutoff d'autocorrelacio)
-dat = mostra.df[-1]
+dat = f_pe[-1]
 corFeat9 = findCorrelation(cor(dat), cutoff=0.9, verbose=FALSE) + 1
 corFeat8 = findCorrelation(cor(dat), cutoff=0.85, verbose=FALSE) + 1
-mostra.df = mostra.df[,-(corFeat8)]
+
+# Visualització de la matriu d'autocorrelacio
+plot.sociomatrix(cor(f_pe[,-c(1,corFeat9)]), drawlab=FALSE, diaglab=FALSE)
+
 
 # Debug de les variables eliminades amb quines es trobaven correlacionades
 var_num = 61

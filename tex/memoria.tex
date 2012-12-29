@@ -15,6 +15,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{Sweave}
 \begin{document}
+
 \input{memoria-concordance}
 
 
@@ -30,27 +31,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introducció}
 
-In this example we embed parts of the examples from the
-\texttt{kruskal.test} help page into a \LaTeX{} document:
-\begin{Schunk}
-\begin{Sinput}
-> data(airquality)
-\end{Sinput}
-\end{Schunk}
-which shows that the location parameter of the Ozone 
-distribution varies significantly from month to month. Finally we
-include a boxplot of the data:
-
+Explicació del problema i lllista de variables a usar.
+Especificació del marc de treball (train-test, evaluació de l'error).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Visualització de dades}
 
-El primer pas en qualsevol problema de classificació és entendre les dades que se'ns han donat. Per aquest motiu en aquesta secció pretenem donar a través de l'anàlisi visual, una serie de propietats sobre les variables que influeixen en el problema.
+El primer pas en qualsevol problema de classificació és entendre les dades que se'ns han donat: realació entre les diferents variables, rànking de quines són potencialment més importants i distribucions d'aquestes. Per aquest motiu en aquesta secció pretenem donar a través de l'anàlisi visual, una serie de propietats sobre les variables que influeixen en el problema.
 \\
 \\
-Comencem estudiant la correlació entre elles. Al tenir 116 variables l'eina més adequada per visualitzar l'autocorrelació entre elles és visualitzar gràficament la matriu de correlació. En la figura \ref{fig:autoc} observem la matriu on cada casella representa un valor i com més fosc més proper a 1. Hi ha variables que estan completament correlacionades (per exemple \texttt{neighborhood intensity feature 2} amb \texttt{neighborhood intensity feature 8}). Per eliminar-les, fixem un nivell a partir del qual considerem que les variables estan correlacionades i n'eliminem aquella que té una mitja de correlació més alta amb les altres. Després d'aquest procés i fixant un tall a 0.85 passem de 116 variables a 88 variables. Podem observar la matriu d'autocorrelació neta en la figura \ref{fig:autoc_clean}.
-
+Comencem estudiant la correlació entre elles. Al tenir 116 variables l'eina més adequada per visualitzar l'autocorrelació entre elles és plasmar gràficament la matriu de correlació. En la figura \ref{fig:autoc} observem la matriu on cada casella representa un valor de la matriu i com més fosc més proper a 1. Hi ha variables que estan completament correlacionades (per exemple \texttt{neighborhood intensity feature 2} amb \texttt{neighborhood intensity feature 8}). Per eliminar-les, fixem un nivell a partir del qual considerem que les variables estan correlacionades i n'eliminem aquella que té una mitja de correlació més alta amb les altres. Després d'aquest procés i fixant un tall a 0.85 passem de 116 variables a 91 variables. Podem observar la matriu d'autocorrelació neta en la figura \ref{fig:autoc_clean}.
+\\
+\\
+Després de netejar les variables autocorrelacionades, fem un anàlisi exploratòria d'algunes variables. De les variables ens interessa coneixer la seva distribució condicionada a la classe, boxplots segons classe, scatter plots 2 a 2 amb altres variables (per veure possibles parelles de variables que separin). Podem obtenir tots aquests descriptius de les variables en una sola imatge. En la figura \ref{fig:pos} observem aquests descriptius per les variables de posició (coordenades x,y i z del PE) i la mida del PE candidat (amb el nom de \texttt{V5}). Observem com l'\textit{scatter} de les coordenades de posició ens dibuixen els plans de tall d'uns pulmons com calia esperar. Tanmateix observem també que no és descriminador la posició del candidat per dir si és o no PE. Respecte a la variable "mida" si que veiem que és més discriminador: els scatters amb les coordenades ens consegueixen separar prou bé els 1 dels 0. 
+\\
+\\
+Finalment en la figura \ref{fig:top_var} podem observar els mateixos descriptius comentats anteriorment per a les 7 variables més significatives del model segons el \textit{CAT score} (ja en donarem més detalls en l'apartat LDA). Observem per anàlisis visual que cap de les distribucions condicionades (primera columna de la imatge) s'acosta a una distribució gaussiana, però les distribucions condicionades a les classes són diferents (no s'acaba de poder apreciar ja que motrem la freqüència enlloc de la densitat). Per altra banda, els boxplots condicionats (primera fila) en mostra com efectivament ens donen distribucions diferents segons la classe. Com més diferents siguin les distribucions condicionades a la classe més senzill en serà poder separar (no en va estem mostrant aquí les nostres top 7 variables). 
 
 
 \begin{center}
@@ -63,16 +60,119 @@ Comencem estudiant la correlació entre elles. Al tenir 116 variables l'eina mé
 \begin{center}
 \begin{figure}
 \includegraphics[width=5in]{memoria-autoc_clean}
-\caption{Autocorrelació de les 88 variables.} \label{fig:_clean}
+\caption{Autocorrelació de les 91
+variables.} \label{fig:autoc_clean}
 \end{figure}
 \end{center}
+
+% # <<fig=TRUE,echo=FALSE, include=FALSE, label=pos>>=
+% # ggpairs(mostra.df[,c(1,v_pos,5)], colour='label')
+% # @
+% \begin{center}
+% \begin{figure}
+% \includegraphics[width=5in]{memoria-pos}
+% \caption{Scatters, distribucions condicionades, correlacions i boxplots de les variables coordenades i la mida del candidat (\texttt{V5}).} \label{fig:pos}
+% \end{figure}
+% \end{center}
+
+% # <<fig=TRUE,echo=FALSE, include=FALSE, label=top_var>>=
+% # ggpairs(f_pe[,c(1,v_top)], colour='label')
+% # @
+% \begin{center}
+% \begin{figure}
+% \includegraphics[width=5in]{memoria-top_var}
+% \caption{Variables més importants segons el CAT score.} \label{fig:top_var}
+% \end{figure}
+% \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Reducció de dimensionalitat}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Classificadors}
-\subsection{LDA, QDA}
+\subsection{DDA, LDA, QDA}
+En aquest aprtat avaluarem els resultats dels classificadors bastats en discriminants. Concretament hem estudiar el DDA (\textit{Diagonal Discriminant Analysis} o  \textit{Naive Bayes} és considerar la matriu de covariàncies diagonals o, equivalentment, que les variables del model són independents), el LDA i QDA. També hem estudiat diferents opcions de selecció de variables específiques del mètode que . De tots ells en donem la probabilitat d'error en el conjunt de test i conjunt d'entranament i quan és possible la curva ROC i AUC (àrea sota d'aquesta curva).
+\\
+\\
+Comencem mostrant una comparativa entre els tres classificadors aplicats sobre les 91 variables (n'hem extret les no correlacionadaes tal com hem comentat en la secció de visualització de dades). En la taula \ref{tab:error_da1} podem observar els errors de classificació dels tres algorismes en els conjunts de train i test. DDA, que fa la hipotèsi més forta de independència entre les variables obté el pitjor resultat en els dos conjunts. Tant LDA com QDA obtenen errors amb ordres de magnitud similars. Tanmateix QDA sembla produir una mica més de \textit{overfitting} al tenir un error menor en el conjunt d'entrenament i un superior al de test respecte LDA. En sentit global podem dir que LDA obté millors resultats per aquest problema de QDA. 
+
+% latex table generated in R 2.15.2 by xtable 1.7-0 package
+% Sat Dec 29 22:38:21 2012
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrr}
+  \hline
+ & error\_train & error\_test \\ 
+  \hline
+DDA & 0.18 & 0.22 \\ 
+  LDA & 0.09 & 0.10 \\ 
+  QDA & 0.07 & 0.11 \\ 
+   \hline
+\end{tabular}
+\caption{Comparativa dels classificadors sobre les 91 variables no classificades}
+\label{tab:error_da1}
+\end{center}
+\end{table}
+En la figura \ref{fig:da_roc} hem inclòs també la curva ROC per als classificadors DDA i LDA per poder comparar-los millor. 
+\\
+\\
+\subsubsection{Selecció i projecció de variables}
+En la segona part de l'ànalisis d'aquests classificadors, hem avaluat el LDA (per ser el que millors resultats ha obtingut) per diferents conjunts de variables. Pretenm aquí veure l'efecte dels classificadors en dos nous subconjunts de variables. Per una banda, usant les variables obtingudes per PCA i ICA (projecció). Per altra, usant només aquelles variables més significatives (selecció), on ja detallarem qué entenem per més significatives.  
+\\
+\\
+PCA i ICA
+\\
+\\
+La segona metodologia empleada per la selecció de varibles és la de selecció de les més significatives. La selecció de variables més significatives sol ser una fase molt important en l'entrenament de classificadors per dos motius: per una banda redueix l'error de generalització i per altra disminueix el cost computacional de l'entrenament. Existeix una àmplia bibliogràfia sobre diferents metodologies de selecció de variables, tant seleccions genèriques (tipo filtres, tal com hem fet al eliminar les variables correlacionades) com seleccions espcífiques per cada classificador (\textit{wrapper}). En el nostre cas hem empleat el marc teòric del classificador LDA per puntuar cada una de les variables mitjançant els \textit{CAT scores} (una explicació detallada del mètode és pot trobar a \cite{strimmer10}). En la imatge \ref{fig:top_var_da} podem observar les 20 variables més significatives així com la magnitud de la seva importància i el signe de les seva contribució (si el seu augment contribueix a una o una altra classe). Per tal de saber quin era el nombre de varibales més adient per usar, em fet una gràfica del error comés en el test set segons els nombre usat. Aquesta gràfica (figra \ref{fig:lda_var_selec}) ens mostra que per 43 variables obtenim l'error en el test menor. A partir de llavors l'error incrementa de nou.
+\\
+\\
+En la taula \ref{tab:error_da2} es pot veure els resultat de tots els subconjunts de variables usats: \texttt{LDA} per al classificador amb les 91 variables, \texttt{LDAPCA} i \texttt{LDAICA} per als classificadors amb variables PCA i ICA respectivament i \texttt{LDAselect} per al classificador usant només les 43 variables més importants. 
+
+% latex table generated in R 2.15.2 by xtable 1.7-0 package
+% Sat Dec 29 22:38:21 2012
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rr}
+  \hline
+ & error\_test \\ 
+  \hline
+LDA & 0.10 \\ 
+  LDA\_PCA & 0.00 \\ 
+  LDA\_ICA & 0.00 \\ 
+  LDA\_selec & 0.10 \\ 
+   \hline
+\end{tabular}
+\caption{Comparativa de LDA aplicat sobre diversos conjunts de variables}
+\label{tab:error_da2}
+\end{center}
+\end{table}
+[Explicació shrinkage i variable selection]
+[Sobre LDA, diferents subsets de variables]
+
+
+
+\begin{center}
+\begin{figure}
+\includegraphics[width=5in]{memoria-da_roc}
+\caption{Curva ROC de LDA.} \label{fig:da_roc}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}
+\includegraphics[width=5in]{memoria-top_var_da}
+\caption{Ranking de les 20 variables més significatives i la seva contribució a cada una de les classes.} \label{fig:top_var_da}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}
+\includegraphics[width=5in]{memoria-lda_var_selec}
+\caption{Error en el conjunt de test en funció del nombre de variables usades (oredenades segons importància de CAT score).} \label{fig:lda_var_selec}
+\end{figure}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{k-NN}
 \subsection{SVM}
 \subsection{Xarxes Neuronals}
