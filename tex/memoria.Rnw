@@ -121,24 +121,21 @@ PCA i ICA
 La segona metodologia empleada per la selecció de varibles és la de selecció de les més significatives. La selecció de variables més significatives sol ser una fase molt important en l'entrenament de classificadors per dos motius: per una banda redueix l'error de generalització i per altra disminueix el cost computacional de l'entrenament. Existeix una àmplia bibliogràfia sobre diferents metodologies de selecció de variables, tant seleccions genèriques (tipo filtres, tal com hem fet al eliminar les variables correlacionades) com seleccions espcífiques per cada classificador (\textit{wrapper}). En el nostre cas hem empleat el marc teòric del classificador LDA per puntuar cada una de les variables mitjançant els \textit{CAT scores} (una explicació detallada del mètode és pot trobar a \cite{strimmer10}). En la imatge \ref{fig:top_var_da} podem observar les 20 variables més significatives així com la magnitud de la seva importància i el signe de les seva contribució (si el seu augment contribueix a una o una altra classe). Per tal de saber quin era el nombre de varibales més adient per usar, em fet una gràfica del error comés en el test set segons els nombre usat. Aquesta gràfica (figra \ref{fig:lda_var_selec}) ens mostra que per 43 variables obtenim l'error en el test menor. A partir de llavors l'error incrementa de nou.
 \\
 \\
-En la taula \ref{tab:error_da2} es pot veure els resultat de tots els subconjunts de variables usats: \texttt{LDA} per al classificador amb les 91 variables, \texttt{LDAPCA} i \texttt{LDAICA} per als classificadors amb variables PCA i ICA respectivament i \texttt{LDAselect} per al classificador usant només les 43 variables més importants. 
+En la taula \ref{tab:error_da2} es pot veure els resultat de tots els subconjunts de variables usats: \texttt{LDA} per al classificador amb les 91 variables, \texttt{LDAPCA} i \texttt{LDAICA} per als classificadors amb variables PCA i ICA respectivament i \texttt{LDAselect} per al classificador usant només les 43 variables més importants. [ANALISIS ICA I PCA]
 
 <<results=tex, echo=FALSE>>=
 xtable(error.lda.df, caption="Comparativa de LDA aplicat sobre diversos conjunts de variables", label="tab:error_da2")
 @
 
-[Explicació shrinkage i variable selection]
-[Sobre LDA, diferents subsets de variables]
-
-
 
 <<fig=TRUE,echo=FALSE, include=FALSE, label=da_roc>>=
-plot(perf.lda, colorize=TRUE) # PLOT
+plot(perf.lda, col="red") # PLOT
+plot(perf.dda, add=TRUE, col="blue")
 @
 \begin{center}
 \begin{figure}
 \includegraphics[width=5in]{memoria-da_roc}
-\caption{Curva ROC de LDA.} \label{fig:da_roc}
+\caption{Curva ROC de LDA (en vermell) i DDA (en blau).} \label{fig:da_roc}
 \end{figure}
 \end{center}
 

@@ -7,7 +7,7 @@ library(ROCR) #performance
 library(klaR) # partimat
 library(sda) #sda(lda + shrinkage + feat selection), sda.ranking, catscores (both feat.selection)
 
-# Dataframe to store resutls
+# Dataframe to store results
 error.da.df = data.frame(error_train=rep(0,3), error_test=rep(0,3))
 rownames(error.da.df)=c("DDA","LDA","QDA")
 
@@ -90,10 +90,11 @@ cat("LDA_shrink Test error:", sum(lda_shrink.pred$class!=test.df$label) / nrow(t
 cat("LDA_selec Test error:", sum(lda_selec.pred$class!=test.df$label) / nrow(test.df))
 
 
-# ROC curve
-pred.lda = prediction(pred.lda$x, test.df$label)
+# ROC curve (For LDA + DDA)
+pred.lda = prediction(pred.lda.test$x[,1], test.df$label)
 perf.lda = performance(pred.lda, measure = "tpr", x.measure = "fpr") 
-plot(perf.lda, colorize=TRUE) # PLOT
+plot(perf.lda, col="red") # PLOT
+plot(perf.dda, add=TRUE, col="blue")
 performance(pred.lda, measure="auc") #AUC
 
 
