@@ -16,11 +16,11 @@ rownames(error.da.df)=c("DDA","LDA","QDA")
 # DDA
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-dda.mod =  sda(as.matrix(train.df[,-c(1,corFeat8)]), train.df$label, 
+dda.mod =  sda(as.matrix(train.df[,-1]), train.df$label, 
                lambda=0, lambda.var=0, diagonal=TRUE) # no shrinkage
 
-pred.dda.train = predict(dda.mod, as.matrix(train.df[,-c(1,corFeat8)]))
-pred.dda.test = predict(dda.mod, as.matrix(test.df[,-c(1,corFeat8)]))
+pred.dda.train = predict(dda.mod, as.matrix(train.df[,-1]))
+pred.dda.test = predict(dda.mod, as.matrix(test.df[,-1]))
 
 error.da.df[1,]=c(sum(pred.dda.train$class!=train.df$label) / nrow(train.df),
                sum(pred.dda.test$class!=test.df$label) / nrow(test.df))
@@ -37,10 +37,10 @@ performance(pred.dda, measure="auc") #AUC
 # LDA
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-lda.mod = lda(label ~ ., data = train.df[,-(corFeat8)])
+lda.mod = lda(label ~ ., data = train.df)
 
-pred.lda.train = predict(lda.mod, train.df[,-(corFeat8)])
-pred.lda.test = predict(lda.mod, test.df[,-(corFeat8)])
+pred.lda.train = predict(lda.mod, train.df)
+pred.lda.test = predict(lda.mod, test.df)
 
 
 error.da.df[2,] = c(sum(pred.lda.train$class!=train.df$label) / nrow(train.df),
@@ -58,7 +58,7 @@ names(train.df)= feat_names_short
 partimat(label~x+y+z+size_feature_1,data=train.df,method="lda")
 
 # feature selection
-sda_ranking = sda.ranking(as.matrix(train.df[,-c(corFeat8,1)]), train.df$label, 
+sda_ranking = sda.ranking(as.matrix(train.df[,-1)]), train.df$label, 
                           diagonal=FALSE, fdr=TRUE, plot.fdr=FALSE, verbose=TRUE)
 plot(sda_ranking, top=20)
 
@@ -74,12 +74,12 @@ plot(err, type="l", xlab="Nombre variables", ylab="error")
 
 sda_feat_select = sda_ranking[1:43,1]
 
-lda_shrink.mod = sda(as.matrix(train.df[,-c(1,corFeat8)]), train.df$label)
+lda_shrink.mod = sda(as.matrix(train.df[,-1]), train.df$label)
 lda_selec.mod = sda(as.matrix(train.df[,c(sda_feat_select)]), train.df$label)
 lda_selec_shrink.mod
 summary(lda.mod)
 
-lda_shrink.pred = predict(lda_shrink.mod, as.matrix(test.df[,-c(1,corFeat8)]))
+lda_shrink.pred = predict(lda_shrink.mod, as.matrix(test.df[,-1]))
 lda_selec.pred = predict(lda_selec.mod, as.matrix(test.df[,c(sda_feat_select)]))
 error.lda.df[1,] = error.da.df[2,"error_test"]#lda total 
 error.lda.df[2,] = 0 #lda PCA
@@ -102,10 +102,10 @@ performance(pred.lda, measure="auc") #AUC
 # QDA
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-qda.mod = qda(label ~ ., data = train.df[,-(corFeat8)])
+qda.mod = qda(label ~ ., data = train.df)
 
-pred.qda.train = predict(qda.mod, train.df[,-(corFeat8)])
-pred.qda.test = predict(qda.mod, test.df[,-(corFeat8)])
+pred.qda.train = predict(qda.mod, train.df)
+pred.qda.test = predict(qda.mod, test.df)
 
 
 error.da.df[3,] = c(sum(pred.qda.train$class!=train.df$label) / nrow(train.df),
@@ -114,4 +114,4 @@ cat("QDA Train error:",error.da.df[3,"error_train"])
 cat("QDA Test error:",error.da.df[3,"error_test"])
 
 # matrius de covariàncies per estudiar-ne el condicionament
-kappa(cov(as.matrix(train.df[,-c(1,corFeat8)])))
+kappa(cov(as.matrix(train.df[,-1])))

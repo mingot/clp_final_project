@@ -162,7 +162,21 @@ plot(sda_ranking, top=20)
 
 \subsection{k-NN}
 \subsection{SVM}
-\subsection{Xarxes Neuronals}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Xarxes Neuronals
+Presentem aquí els resutlats de l'entrenament de les NN. En primer lloc, hem tingut en compte la dependència de les NN respecte el seus valors inicials per lo que hem canviat el marc de treball per fer-lo més robust. Hem també  usat diferents mètodes per determinar els paràmetres òptims de les xarxes i presentem també els resultats de classificació i curves ROC per diferents conjunts de variables usats.
+\\
+\\
+Per entrenar les xarxes neuronals hem canviat una mica el nostre marc de treball format, fins ara, per un conjunt d'entrenament i un de test. Degut a que les xarxes neuronals tenen una dependència elevada amb els seus valors inicials, hem optat per usar la tècnica de la validació creuada \textit{k-fold}. Aquesta tècnica consisteix en partir el conjunt total de dades en $k$ parts. Aleshores, s'entrena el classificador en $k-1$ i s'evalua en la restant. D'aquesta manera és pot usar el mateix conjunt de dades per obtenir fins a $k$ mesures de l'error sobre un conjunt de test. Respecte l'entrenament de les xarxes, hem seguit la filosofia general suggerida a \cite{hastie09}. Allí se'ns proposa entrenar les xarxes neuronals amb només una capa oculta. Per seleccionar el nombre de unitats d'aquesta capa, s'introdueix un terme de \textit{shrinkage} que ens penalitza tenir molts paràmetres (regularització). Així doncs, la metodologia usada ha estat entrenar les xarxes amb moltes unitats imaginàries i determinar per validació creuada el valor òptim del terme de penalització. 
+\\
+\\
+En la figura \ref{fig:nn_penalty} podem observar com varia l'error en el conjunt de test (mitja dels $k$ entrenaments) en funció del terme de regularització. En totes elles estem usant 8. Per tant ens quedem amb un valor de X per aquest terme. Usant aquest valor veiem que 
+
+[Nombre de capes ocultes i nombre de variables en capa]
+[Selecció i projecció de variables]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Arbres}
 \subsection{Random Forest (opcional)}
 \subsection{Unió de classificadors}
@@ -178,12 +192,19 @@ plot(sda_ranking, top=20)
 \begin{thebibliography}{9}
 
 
-\bibitem{strimmer10}
+\bibitem{strimmer10} %CAT scores i selecció de variables en da 
   Miika Ahdesmaki and Korbinian Strimmer,
   \emph{Feature selection in omics prediction problems using CAT scores and False Nondiscovery Rate Control},
   The Annals of Applied Statistics, 
   Vol. 4,
   2010.
+
+\bibitme{hastie09} % neural networks
+  Trevor Hastie, Robert Tibshirani, Jerome Friedman,
+  \emph{The elements of statistical learning},
+  Springer,
+  2nd ed., 
+  2009.
 
 
 \end{thebibliography}
