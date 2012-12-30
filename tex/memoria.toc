@@ -5,9 +5,9 @@
 \contentsline {section}{\numberline {4}Classificadors}{6}
 \contentsline {subsection}{\numberline {4.1}DDA, LDA, QDA}{6}
 \contentsline {subsubsection}{\numberline {4.1.1}Selecci\IeC {\'o} i projecci\IeC {\'o} de variables}{6}
-\contentsline {subsection}{\numberline {4.2}k-NN}{11}
-\contentsline {subsection}{\numberline {4.3}SVM}{11}
-\contentsline {subsection}{\numberline {4.4}Xarxes Neuronals}{11}
+\contentsline {subsection}{\numberline {4.2}k-NN}{7}
+\contentsline {subsection}{\numberline {4.3}SVM}{7}
+\contentsline {subsection}{\numberline {4.4}Xarxes Neuronals}{7}
 \contentsline {subsection}{\numberline {4.5}Arbres}{11}
 \contentsline {subsection}{\numberline {4.6}Random Forest (opcional)}{11}
 \contentsline {subsection}{\numberline {4.7}Uni\IeC {\'o} de classificadors}{11}

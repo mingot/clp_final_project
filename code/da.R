@@ -62,15 +62,15 @@ sda_ranking = sda.ranking(as.matrix(train.df[,-1)]), train.df$label,
                           diagonal=FALSE, fdr=TRUE, plot.fdr=FALSE, verbose=TRUE)
 plot(sda_ranking, top=20)
 
-err=numeric(0)
+err.var_da=numeric(0)
 for(top in 3:80){
   # top=20
   sda_feat_select = sda_ranking[1:top,1]
   lda_selec.mod = sda(as.matrix(train.df[,c(sda_feat_select)]), train.df$label)
   lda_selec.pred = predict(lda_selec.mod, as.matrix(test.df[,c(sda_feat_select)]))
-  err = c(err, sum(lda_selec.pred$class!=test.df$label) / nrow(test.df))
+  err.var_da = c(err.var_da, sum(lda_selec.pred$class!=test.df$label) / nrow(test.df))
 }
-plot(err, type="l", xlab="Nombre variables", ylab="error")
+plot(err.var_da, type="l", xlab="Nombre variables", ylab="error")
 
 sda_feat_select = sda_ranking[1:43,1]
 

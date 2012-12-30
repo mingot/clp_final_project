@@ -91,13 +91,13 @@ variables.} \label{fig:autoc_clean}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Classificadors}
 \subsection{DDA, LDA, QDA}
-En aquest aprtat avaluarem els resultats dels classificadors bastats en discriminants. Concretament hem estudiar el DDA (\textit{Diagonal Discriminant Analysis} o  \textit{Naive Bayes} és considerar la matriu de covariàncies diagonals o, equivalentment, que les variables del model són independents), el LDA i QDA. També hem estudiat diferents opcions de selecció de variables específiques del mètode que . De tots ells en donem la probabilitat d'error en el conjunt de test i conjunt d'entranament i quan és possible la curva ROC i AUC (àrea sota d'aquesta curva).
+En aquest aprtat avaluarem els resultats dels classificadors bastats en discriminants. Concretament hem estudiar el DDA (\textit{Diagonal Discriminant Analysis} o  \textit{Naive Bayes} on la matriu de covariàncies diagonals o, equivalentment, que les variables del model són independents), el LDA i QDA. Analitzem també diversos escenaris en funció de les variables d'entrada dels models . De tots ells en donem la probabilitat d'error en el conjunt de test i conjunt d'entranament i quan és possible la curva ROC en el conjunt de test.
 \\
 \\
 Comencem mostrant una comparativa entre els tres classificadors aplicats sobre les 91 variables (n'hem extret les no correlacionadaes tal com hem comentat en la secció de visualització de dades). En la taula \ref{tab:error_da1} podem observar els errors de classificació dels tres algorismes en els conjunts de train i test. DDA, que fa la hipotèsi més forta de independència entre les variables obté el pitjor resultat en els dos conjunts. Tant LDA com QDA obtenen errors amb ordres de magnitud similars. Tanmateix QDA sembla produir una mica més de \textit{overfitting} al tenir un error menor en el conjunt d'entrenament i un superior al de test respecte LDA. En sentit global podem dir que LDA obté millors resultats per aquest problema de QDA. 
 
 % latex table generated in R 2.15.2 by xtable 1.7-0 package
-% Sat Dec 29 22:38:21 2012
+% Sun Dec 30 13:40:20 2012
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rrr}
@@ -126,10 +126,10 @@ PCA i ICA
 La segona metodologia empleada per la selecció de varibles és la de selecció de les més significatives. La selecció de variables més significatives sol ser una fase molt important en l'entrenament de classificadors per dos motius: per una banda redueix l'error de generalització i per altra disminueix el cost computacional de l'entrenament. Existeix una àmplia bibliogràfia sobre diferents metodologies de selecció de variables, tant seleccions genèriques (tipo filtres, tal com hem fet al eliminar les variables correlacionades) com seleccions espcífiques per cada classificador (\textit{wrapper}). En el nostre cas hem empleat el marc teòric del classificador LDA per puntuar cada una de les variables mitjançant els \textit{CAT scores} (una explicació detallada del mètode és pot trobar a \cite{strimmer10}). En la imatge \ref{fig:top_var_da} podem observar les 20 variables més significatives així com la magnitud de la seva importància i el signe de les seva contribució (si el seu augment contribueix a una o una altra classe). Per tal de saber quin era el nombre de varibales més adient per usar, em fet una gràfica del error comés en el test set segons els nombre usat. Aquesta gràfica (figra \ref{fig:lda_var_selec}) ens mostra que per 43 variables obtenim l'error en el test menor. A partir de llavors l'error incrementa de nou.
 \\
 \\
-En la taula \ref{tab:error_da2} es pot veure els resultat de tots els subconjunts de variables usats: \texttt{LDA} per al classificador amb les 91 variables, \texttt{LDAPCA} i \texttt{LDAICA} per als classificadors amb variables PCA i ICA respectivament i \texttt{LDAselect} per al classificador usant només les 43 variables més importants. 
+En la taula \ref{tab:error_da2} es pot veure els resultat de tots els subconjunts de variables usats: \texttt{LDA} per al classificador amb les 91 variables, \texttt{LDAPCA} i \texttt{LDAICA} per als classificadors amb variables PCA i ICA respectivament i \texttt{LDAselect} per al classificador usant només les 43 variables més importants. [ANALISIS ICA I PCA]
 
 % latex table generated in R 2.15.2 by xtable 1.7-0 package
-% Sat Dec 29 22:38:21 2012
+% Sun Dec 30 13:40:20 2012
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rr}
@@ -146,15 +146,11 @@ LDA & 0.10 \\
 \label{tab:error_da2}
 \end{center}
 \end{table}
-[Explicació shrinkage i variable selection]
-[Sobre LDA, diferents subsets de variables]
-
-
 
 \begin{center}
 \begin{figure}
 \includegraphics[width=5in]{memoria-da_roc}
-\caption{Curva ROC de LDA.} \label{fig:da_roc}
+\caption{Curva ROC de LDA (en vermell) i DDA (en blau).} \label{fig:da_roc}
 \end{figure}
 \end{center}
 
@@ -175,7 +171,34 @@ LDA & 0.10 \\
 
 \subsection{k-NN}
 \subsection{SVM}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Xarxes Neuronals}
+Presentem aquí els resutlats de l'entrenament de les NN. En primer lloc, hem tingut en compte la dependència de les NN respecte el seus valors inicials per lo que hem canviat el marc de treball per fer-lo més robust. Hem també  usat diferents mètodes per determinar els paràmetres òptims de les xarxes i presentem també els resultats de classificació i curves ROC per diferents conjunts de variables usats.
+\\
+\\
+Per entrenar les xarxes neuronals hem canviat una mica el nostre marc de treball format, fins ara, per un conjunt d'entrenament i un de test. Degut a que les xarxes neuronals tenen una dependència elevada amb els seus valors inicials, hem optat per usar la tècnica de la validació creuada \textit{k-fold}. Aquesta tècnica consisteix en partir el conjunt total de dades en $k$ parts. Aleshores, s'entrena el classificador en $k-1$ i s'evalua en la restant. D'aquesta manera és pot usar el mateix conjunt de dades per obtenir fins a $k$ mesures de l'error sobre un conjunt de test. Respecte l'entrenament de les xarxes, hem seguit la filosofia general suggerida a \cite{hastie09}. Allí se'ns proposa entrenar les xarxes neuronals amb només una capa oculta. Per seleccionar el nombre de unitats d'aquesta capa, s'introdueix un terme de \textit{shrinkage} que ens penalitza tenir molts paràmetres (regularització). Així doncs, la metodologia usada ha estat entrenar les xarxes amb moltes unitats imaginàries i determinar per validació creuada el valor òptim del terme de penalització. 
+\\
+\\
+En la figura \ref{fig:nn_regular} podem observar com varia l'error en el conjunt de test (mitja dels $k$ entrenaments) en funció del terme de regularització. En totes elles estem usant 8. Després de diverses execucions probant diferents valors, obtenim que l'ordre de magnitud del valor òptim és sobre els $10^{-2}$. Ens quedem doncs amb un valor de regularització de $5\cdot 10^{-2}$. Per aquests paràmetres descrits podem observar en la figura \ref{fig:nn_roc} la curva ROC per les diferents realitzacions de \textit{5-fold} validació creuada. Obtenim una mitja de 0.85 per l'AUC.
+
+[Selecció i projecció de variables]
+
+
+\begin{center}
+\begin{figure}
+\includegraphics[width=5in]{memoria-nn_regular}
+\caption{Error en el conjunt de test en funció del valor del paràmetre de regularització emprat en una nn d'una capa oculta i 8 unitats amagades.} \label{fig:nn_regular}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}
+\includegraphics[width=5in]{memoria-nn_roc}
+\caption{Curves ROC per la NN amb 8 neurones en capa oculat, amb un terme de regularizació de 0.05. S'obté una AUC mitja de 0.85.} \label{fig:nn_roc}
+\end{figure}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Arbres}
 \subsection{Random Forest (opcional)}
 \subsection{Unió de classificadors}
@@ -191,12 +214,19 @@ LDA & 0.10 \\
 \begin{thebibliography}{9}
 
 
-\bibitem{strimmer10}
+\bibitem{strimmer10} %CAT scores i selecció de variables en da 
   Miika Ahdesmaki and Korbinian Strimmer,
   \emph{Feature selection in omics prediction problems using CAT scores and False Nondiscovery Rate Control},
   The Annals of Applied Statistics, 
   Vol. 4,
   2010.
+
+\bibitem{hastie09} % neural networks
+  Trevor Hastie, Robert Tibshirani, Jerome Friedman,
+  \emph{The elements of statistical learning},
+  Springer,
+  2nd ed., 
+  2009.
 
 
 \end{thebibliography}
