@@ -16,7 +16,7 @@ Repartició de tasques:
 *SVM (Biel)
 *NN (Josep Marc)
 *Tree (Biel)
-*Random forest (Josep Marc)
+
 
 - Error: #mal classificats/#total vectors
 

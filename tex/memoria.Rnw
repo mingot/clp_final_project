@@ -53,7 +53,7 @@ Finalment en la figura \ref{fig:top_var} podem observar els mateixos descriptius
 
 
 <<fig=TRUE,echo=FALSE, include=FALSE, label=autoc>>=
-plot.sociomatrix(cor(mostra.df[,2:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALSE)
+plot.sociomatrix(cor(f_pe[,2:ncol(f_pe)]), drawlab=FALSE, diaglab=FALSE)
 @
 \begin{center}
 \begin{figure}
@@ -63,7 +63,7 @@ plot.sociomatrix(cor(mostra.df[,2:ncol(mostra.df)]), drawlab=FALSE, diaglab=FALS
 \end{center}
 
 <<fig=TRUE,echo=FALSE, include=FALSE, label=autoc_clean>>=
-plot.sociomatrix(cor(mostra.df[,-c(1,corFeat8)]), drawlab=FALSE, diaglab=FALSE)
+plot.sociomatrix(cor(f_pe[,-c(1,corFeat8)]), drawlab=FALSE, diaglab=FALSE)
 @
 \begin{center}
 \begin{figure}
@@ -165,24 +165,26 @@ plot(err.var_da, type="l", xlab="Nombre variables", ylab="error")
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Xarxes Neuronals}
-Presentem aquí els resutlats de l'entrenament de les NN. En primer lloc, hem tingut en compte la dependència de les NN respecte el seus valors inicials per lo que hem canviat el marc de treball per fer-lo més robust. Hem també  usat diferents mètodes per determinar els paràmetres òptims de les xarxes i presentem també els resultats de classificació i curves ROC per diferents conjunts de variables usats.
+Presentem aquí els resutlats de l'entrenament de l'entrenament de les Xarxes Neuronals (NN). En primer lloc, hem tingut en compte la dependència de les NN respecte el seus valors inicials per lo que hem canviat el marc de treball per fer-lo més robust. Hem també  usat diferents mètodes per determinar els paràmetres òptims de les xarxes i presentem també els resultats de classificació i curves ROC per diferents conjunts de variables usats.
 \\
 \\
-Per entrenar les xarxes neuronals hem canviat una mica el nostre marc de treball format, fins ara, per un conjunt d'entrenament i un de test. Degut a que les xarxes neuronals tenen una dependència elevada amb els seus valors inicials, hem optat per usar la tècnica de la validació creuada \textit{k-fold}. Aquesta tècnica consisteix en partir el conjunt total de dades en $k$ parts. Aleshores, s'entrena el classificador en $k-1$ i s'evalua en la restant. D'aquesta manera és pot usar el mateix conjunt de dades per obtenir fins a $k$ mesures de l'error sobre un conjunt de test. Respecte l'entrenament de les xarxes, hem seguit la filosofia general suggerida a \cite{hastie09}. Allí se'ns proposa entrenar les xarxes neuronals amb només una capa oculta. Per seleccionar el nombre de unitats d'aquesta capa, s'introdueix un terme de \textit{shrinkage} que ens penalitza tenir molts paràmetres (regularització). Així doncs, la metodologia usada ha estat entrenar les xarxes amb moltes unitats imaginàries i determinar per validació creuada el valor òptim del terme de penalització. 
+Per entrenar les xarxes neuronals hem canviat una mica el nostre marc de treball format, fins ara, per un conjunt d'entrenament i un de test. Degut a que les xarxes neuronals tenen una dependència elevada amb els seus valors inicials, hem optat per usar la tècnica de la validació creuada \textit{k-fold}. Aquesta tècnica consisteix en partir el conjunt total de dades en $k$ parts. Aleshores, s'entrena el classificador en $k-1$ i s'evalua en la restant. D'aquesta manera és pot usar el mateix conjunt de dades per obtenir fins a $k$ mesures de l'error sobre un conjunt de test. Respecte l'entrenament de les xarxes, hem seguit la filosofia general suggerida a \cite{hastie09}. Allí se'ns proposa entrenar les xarxes neuronals amb només una capa oculta. Per seleccionar el nombre de unitats d'aquesta capa, s'introdueix un terme de regularització (\textit{shrinkage}) que ens penalitza tenir molts paràmetres. Així doncs, la metodologia usada ha estat entrenar les xarxes amb 8 unitats imaginàries i determinar per validació creuada el valor òptim del terme de penalització. Aquest parametre regularitzador ja se n'encarregarà de posar a 0 les neurones de la cap intermitja que facin falta. 
 \\
 \\
-En la figura \ref{fig:nn_regular} podem observar com varia l'error en el conjunt de test (mitja dels $k$ entrenaments) en funció del terme de regularització. En totes elles estem usant 8. Després de diverses execucions probant diferents valors, obtenim que l'ordre de magnitud del valor òptim és sobre els $10^{-2}$. Ens quedem doncs amb un valor de regularització de $5\cdot 10^{-2}$. Per aquests paràmetres descrits podem observar en la figura \ref{fig:nn_roc} la curva ROC per les diferents realitzacions de \textit{5-fold} validació creuada. Obtenim una mitja de 0.85 per l'AUC.
-
+En la figura \ref{fig:nn_regular} podem observar com varia l'error en el conjunt de test (mitja dels $k$ entrenaments) en funció del terme de regularització. En totes elles estem usant 8. Després de diverses execucions probant diferents valors, obtenim que l'ordre de magnitud del valor òptim és 1. Per aquests paràmetres descrits podem observar en la figura \ref{fig:nn_roc} la curva ROC per les diferents realitzacions de \textit{5-fold} validació creuada. Obtenim una mitja de 0.85 per l'AUC.
+\\
+\\
+Finalment i paral·lelament al que hem estat fent amb els altres classificadors anem a estudiar com es comporten les xarxes neuronals en funció 
 [Selecció i projecció de variables]
 
 
 <<fig=TRUE,echo=FALSE, include=FALSE, label=nn_regular>>=
-plot(1:10*0.01, err.reg, type="l")
+plot(log10(x.lab), err.reg, type="l", xlab="log(param_reg)", ylab="error")
 @
 \begin{center}
 \begin{figure}
 \includegraphics[width=5in]{memoria-nn_regular}
-\caption{Error en el conjunt de test en funció del valor del paràmetre de regularització emprat en una nn d'una capa oculta i 8 unitats amagades.} \label{fig:nn_regular}
+\caption{Error en el conjunt de test en funció del valor del paràmetre de regularització emprat en una nn d'una capa oculta i 8 unitats amagades. La variació del parametre regularitzador s'ha realitzat en escala logarítmica.} \label{fig:nn_regular}
 \end{figure}
 \end{center}
 

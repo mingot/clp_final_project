@@ -23,6 +23,7 @@ f_pe[f_pe$label!=0,"label"] = 1 # posem labels a 1 de cada candidat
 f_pe$label = factor(f_pe$label) # fiquem com a factor
 
 
+
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Noms de grups de variables
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

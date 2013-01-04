@@ -20,14 +20,16 @@ performance(pred.roc, measure="auc")
 # Nombre optim de neurones capa intermitja
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-# Trobar nombre optim de neurones capa intermitja
+# Trobar nombre optim de neurones capa intermitja a travaes del parametre de regularització
 err.reg=numeric(0)
+x.lab = numeric(0)
 for(i in 1:10){
-  nn.mod = nnet(label ~ . , data = train.df, size=8, decay=i*0.01)
+  nn.mod = nnet(label ~ . , data = train.df, size=8, decay=10^(i-8))
   pred = predict(nn.mod, test.df)
   err.reg = c(err.reg,sum(abs(pred-(as.numeric(test.df$label)-1)))/nrow(test.df))
+  x.lab = c(x.lab, 10^(i-5))
 }
-plot(1:10*0.01, err.reg, type="l")
+plot(log10(x.lab), err.reg, type="l", xlab="log(param_reg)", ylab="error")
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # CV
@@ -36,7 +38,7 @@ plot(1:10*0.01, err.reg, type="l")
 pred.cv=numeric(0)
 real.cv=numeric(0)
 for(i in 1:5){
-  nn.mod = nnet(label~., data = f_pe[index_cv[[i]]$train,], size=5, decay=0.005)
+  nn.mod = nnet(label~., data = f_pe[index_cv[[i]]$train,], size=8, decay=1)
   pred = head(predict(nn.mod, f_pe[index_cv[[i]]$test,]),607)
   pred.cv = cbind(pred.cv, pred)
   real.cv = cbind(real.cv, as.numeric(head(f_pe[index_cv[[i]]$test,"label"], 607))-1)
