@@ -31,7 +31,7 @@ cat("DDA Test error:", error.da.df[1,"error_test"])
 pred.dda = prediction(pred.dda.test$posterior[,2], test.df$label)
 perf.dda = performance(pred.dda, measure = "tpr", x.measure = "fpr") 
 plot(perf.dda, colorize=TRUE)
-performance(pred.dda, measure="auc") #AUC
+cat("auc: ",as.numeric(performance(pred.dda, measure="auc")@y.values)) #AUC
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # LDA
@@ -63,14 +63,16 @@ sda_ranking = sda.ranking(as.matrix(train.df[,-1]), train.df$label,
 plot(sda_ranking, top=10)
 
 err.var_da=numeric(0)
+x.da.var=numeric(0)
 for(top in 3:80){
   # top=20
+  x.da.var = c(x.da.var,top)
   sda_feat_select = sda_ranking[1:top,1]
-  lda_selec.mod = sda(as.matrix(train.df[,c(sda_feat_select)]), train.df$label)
-  lda_selec.pred = predict(lda_selec.mod, as.matrix(test.df[,c(sda_feat_select)]))
+  lda_selec.mod = sda(as.matrix(train.df[,sda_feat_select+1]), train.df$label)
+  lda_selec.pred = predict(lda_selec.mod, as.matrix(test.df[,sda_feat_select+1]))
   err.var_da = c(err.var_da, sum(lda_selec.pred$class!=test.df$label) / nrow(test.df))
 }
-plot(err.var_da, type="l", xlab="Nombre variables", ylab="error")
+plot(x.da.var,err.var_da, type="l", xlab="Nombre variables", ylab="error")
 
 sda_feat_select = sda_ranking[1:43,1]
 

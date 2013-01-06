@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.20)  5 JAN 2013 22:46
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.20)  6 JAN 2013 20:01
 entering extended mode
  %&-line parsing enabled.
 **memoria.tex
@@ -279,7 +279,11 @@ LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
-)))) (./memoria.aux)
+)))) (./memoria.aux
+
+LaTeX Warning: Label `fig:nn_roc' multiply defined.
+
+)
 \openout1 = `memoria.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -296,8 +300,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
-
-(/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+ (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 17.
@@ -339,168 +342,169 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 \openout4 = `memoria.toc'.
 
  [2]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 44.
+Underfull \hbox (badness 10000) in paragraph at lines 34--45
 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--45
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--45
+
+ []
+
+LaTeX Font Info:    Try loading font information for T1+aett on input line 53.
 (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 
-LaTeX Warning: Reference `fig:pos' on page 3 undefined on input line 47.
+LaTeX Warning: Reference `fig:pos' on page 3 undefined on input line 56.
 
 
-LaTeX Warning: Reference `fig:top_var' on page 3 undefined on input line 50.
+LaTeX Warning: Reference `fig:top_var' on page 3 undefined on input line 59.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--51
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 41--51
+Underfull \hbox (badness 10000) in paragraph at lines 50--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--51
+Underfull \hbox (badness 10000) in paragraph at lines 50--60
 
  []
 
-<memoria-autoc.pdf, id=15, 433.62pt x 433.62pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--60
+
+ []
+
+[3] <memoria-autoc.pdf, id=20, 433.62pt x 433.62pt>
 File: memoria-autoc.pdf Graphic file (type pdf)
  <use memoria-autoc.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 55--56
-[][] 
- []
-
-<memoria-autoc_clean.pdf, id=16, 433.62pt x 433.62pt>
+<memoria-autoc_clean.pdf, id=21, 433.62pt x 433.62pt>
 File: memoria-autoc_clean.pdf Graphic file (type pdf)
 
 <use memoria-autoc_clean.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 62--64
-[][] 
- []
-
-[3] [4 <./memoria-autoc.pdf>] [5 <./memoria-autoc_clean.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 94--98
+Underfull \hbox (badness 10000) in paragraph at lines 107--111
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 116--119
+[4] [5 <./memoria-autoc.pdf> <./memoria-autoc_clean.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 129--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--119
+Underfull \hbox (badness 10000) in paragraph at lines 129--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--130
+Underfull \hbox (badness 10000) in paragraph at lines 133--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--130
+Underfull \hbox (badness 10000) in paragraph at lines 133--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--130
+Underfull \hbox (badness 10000) in paragraph at lines 133--143
 
  []
 
-[6] <memoria-da_roc.pdf, id=37, 433.62pt x 433.62pt>
+[6] <memoria-da_roc.pdf, id=38, 433.62pt x 433.62pt>
 File: memoria-da_roc.pdf Graphic file (type pdf)
  <use memoria-da_roc.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 152--153
-[][] 
- []
-
-<memoria-top_var_da.pdf, id=38, 433.62pt x 433.62pt>
+<memoria-top_var_da.pdf, id=39, 433.62pt x 433.62pt>
 File: memoria-top_var_da.pdf Graphic file (type pdf)
 
 <use memoria-top_var_da.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 159--160
-[][] 
- []
-
-<memoria-lda_var_selec.pdf, id=39, 433.62pt x 433.62pt>
+<memoria-lda_var_selec.pdf, id=40, 433.62pt x 433.62pt>
 File: memoria-lda_var_selec.pdf Graphic file (type pdf)
 
 <use memoria-lda_var_selec.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 166--167
-[][] 
- []
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 199.
 
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 186.
 
 (/usr/share/texmf/tex/latex/R/tex/latex/ts1aer.fd
 File: ts1aer.fd 
 )
 LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <10> not available
-(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 186.
+(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 199.
 
 
-LaTeX Warning: Reference `fig:nn_princomp' on page 7 undefined on input line 18
-6.
+LaTeX Warning: Reference `fig:nn_princomp' on page 7 undefined on input line 19
+9.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--187
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 177--187
+Underfull \hbox (badness 10000) in paragraph at lines 190--200
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--187
+Underfull \hbox (badness 10000) in paragraph at lines 190--200
 
  []
 
-[7] [8 <./memoria-da_roc.pdf>] [9 <./memoria-top_var_da.pdf>] [10 <./memoria-ld
-a_var_selec.pdf>] <memoria-nn_regular.pdf, id=70, 433.62pt x 433.62pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--200
+
+ []
+
+[7] [8 <./memoria-da_roc.pdf> <./memoria-top_var_da.pdf>]
+<memoria-nn_regular.pdf, id=61, 433.62pt x 433.62pt>
 File: memoria-nn_regular.pdf Graphic file (type pdf)
 
-<use memoria-nn_regular.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 192--193
-[][] 
- []
-
-<memoria-nn_roc.pdf, id=71, 433.62pt x 433.62pt>
+<use memoria-nn_regular.pdf> [9 <./memoria-lda_var_selec.pdf>]
+<memoria-nn_roc.pdf, id=73, 433.62pt x 433.62pt>
 File: memoria-nn_roc.pdf Graphic file (type pdf)
  <use memoria-nn_roc.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 199--200
-[][] 
- []
-
-<memoria-nn_princomp.pdf, id=72, 433.62pt x 433.62pt>
+<memoria-nn_princomp.pdf, id=74, 433.62pt x 433.62pt>
 File: memoria-nn_princomp.pdf Graphic file (type pdf)
 
 <use memoria-nn_princomp.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 206--207
-[][] 
+Underfull \hbox (badness 10000) in paragraph at lines 227--231
+
  []
 
-[11] [12 <./memoria-nn_regular.pdf>] [13 <./memoria-nn_roc.pdf>] [14 <./memoria
--nn_princomp.pdf>] [15] (./memoria.aux)
+[10 <./memoria-nn_regular.pdf>] [11 <./memoria-nn_roc.pdf> <./memoria-nn_princo
+mp.pdf>] <memoria-rf_tuning.pdf, id=96, 433.62pt x 433.62pt>
+File: memoria-rf_tuning.pdf Graphic file (type pdf)
+
+<use memoria-rf_tuning.pdf>
+Underfull \hbox (badness 10000) in paragraph at lines 238--274
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--274
+
+ []
+
+<memoria-rf_roc.pdf, id=97, 433.62pt x 433.62pt>
+File: memoria-rf_roc.pdf Graphic file (type pdf)
+ <use memoria-rf_roc.pdf>
+[12] [13 <./memoria-rf_tuning.pdf> <./memoria-rf_roc.pdf>] [14] (./memoria.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4264 strings out of 495061
- 54797 string characters out of 1182621
- 114863 words of memory out of 3000000
- 7318 multiletter control sequences out of 15000+50000
- 37298 words of font info for 86 fonts, out of 3000000 for 9000
+ 4293 strings out of 495061
+ 55210 string characters out of 1182621
+ 113929 words of memory out of 3000000
+ 7333 multiletter control sequences out of 15000+50000
+ 46246 words of font info for 98 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 35i,7n,24p,1401b,589s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,8n,24p,1401b,589s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/mingot/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-t
 exlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/font
@@ -508,14 +512,16 @@ s/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/type1/publ
 ic/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 /cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/shar
-e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmtt10.pfb>
-Output written on memoria.pdf (15 pages, 354308 bytes).
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cms
+y7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on memoria.pdf (14 pages, 397340 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
+ 172 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 45 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 55 words of extra memory for PDF output out of 10000 (max. 10000000)
 

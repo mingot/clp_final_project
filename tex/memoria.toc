@@ -1,6 +1,6 @@
 \select@language {catalan}
 \contentsline {section}{\numberline {1}Introducci\IeC {\'o}}{3}
-\contentsline {section}{\numberline {2}Visualitzaci\IeC {\'o} de dades}{3}
+\contentsline {section}{\numberline {2}Visualitzaci\IeC {\'o} de dades}{4}
 \contentsline {section}{\numberline {3}Reducci\IeC {\'o} de dimensionalitat}{6}
 \contentsline {section}{\numberline {4}Classificadors}{6}
 \contentsline {subsection}{\numberline {4.1}DDA, LDA, QDA}{6}
@@ -8,8 +8,7 @@
 \contentsline {subsection}{\numberline {4.2}k-NN}{7}
 \contentsline {subsection}{\numberline {4.3}SVM}{7}
 \contentsline {subsection}{\numberline {4.4}Xarxes Neuronals}{7}
-\contentsline {subsection}{\numberline {4.5}Arbres}{15}
-\contentsline {subsection}{\numberline {4.6}Random Forest (opcional)}{15}
-\contentsline {subsection}{\numberline {4.7}Uni\IeC {\'o} de classificadors}{15}
-\contentsline {section}{\numberline {5}Conclusions}{15}
-\contentsline {section}{\numberline {A}Primer Ap\IeC {\`e}ndix}{15}
+\contentsline {subsection}{\numberline {4.5}Arbres}{10}
+\contentsline {subsection}{\numberline {4.6}Random Forest (opcional)}{10}
+\contentsline {section}{\numberline {5}Conclusions}{12}
+\contentsline {section}{\numberline {A}Primer Ap\IeC {\`e}ndix}{12}
