@@ -29,7 +29,7 @@ cat("DDA Test error:", error.da.df[1,"error_test"])
 
 # ROC curve
 pred.dda = prediction(pred.dda.test$posterior[,2], test.df$label)
-perf.dda = performance(pred, measure = "tpr", x.measure = "fpr") 
+perf.dda = performance(pred.dda, measure = "tpr", x.measure = "fpr") 
 plot(perf.dda, colorize=TRUE)
 performance(pred.dda, measure="auc") #AUC
 
@@ -54,13 +54,13 @@ error.lda.df = data.frame(error_test=rep(0,4))
 rownames(error.lda.df)=c("LDA","LDA_PCA","LDA_ICA", "LDA_selec")
 
 # lda scatter plot 
-names(train.df)= feat_names_short
-partimat(label~x+y+z+size_feature_1,data=train.df,method="lda")
+# names(train.df)= feat_names_short
+# partimat(label~x+y+z+size_feature_1,data=train.df,method="lda")
 
 # feature selection
-sda_ranking = sda.ranking(as.matrix(train.df[,-1)]), train.df$label, 
+sda_ranking = sda.ranking(as.matrix(train.df[,-1]), train.df$label, 
                           diagonal=FALSE, fdr=TRUE, plot.fdr=FALSE, verbose=TRUE)
-plot(sda_ranking, top=20)
+plot(sda_ranking, top=10)
 
 err.var_da=numeric(0)
 for(top in 3:80){

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.20)  30 DEC 2012 13:40
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.20)  5 JAN 2013 22:46
 entering extended mode
  %&-line parsing enabled.
 **memoria.tex
@@ -433,13 +433,30 @@ Overfull \hbox (16.34999pt too wide) in paragraph at lines 166--167
 [][] 
  []
 
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 186.
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--184
+(/usr/share/texmf/tex/latex/R/tex/latex/ts1aer.fd
+File: ts1aer.fd 
+)
+LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <10> not available
+(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 186.
+
+
+LaTeX Warning: Reference `fig:nn_princomp' on page 7 undefined on input line 18
+6.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--187
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--184
+Underfull \hbox (badness 10000) in paragraph at lines 177--187
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--187
 
  []
 
@@ -448,45 +465,57 @@ a_var_selec.pdf>] <memoria-nn_regular.pdf, id=70, 433.62pt x 433.62pt>
 File: memoria-nn_regular.pdf Graphic file (type pdf)
 
 <use memoria-nn_regular.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 190--191
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 192--193
 [][] 
  []
 
 <memoria-nn_roc.pdf, id=71, 433.62pt x 433.62pt>
 File: memoria-nn_roc.pdf Graphic file (type pdf)
  <use memoria-nn_roc.pdf>
-Overfull \hbox (16.34999pt too wide) in paragraph at lines 197--198
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 199--200
 [][] 
  []
 
-[11] [12 <./memoria-nn_regular.pdf>] [13 <./memoria-nn_roc.pdf>] (./memoria.aux
-)
+<memoria-nn_princomp.pdf, id=72, 433.62pt x 433.62pt>
+File: memoria-nn_princomp.pdf Graphic file (type pdf)
+
+<use memoria-nn_princomp.pdf>
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 206--207
+[][] 
+ []
+
+[11] [12 <./memoria-nn_regular.pdf>] [13 <./memoria-nn_roc.pdf>] [14 <./memoria
+-nn_princomp.pdf>] [15] (./memoria.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 4235 strings out of 495061
- 54261 string characters out of 1182621
- 112863 words of memory out of 3000000
- 7294 multiletter control sequences out of 15000+50000
- 36963 words of font info for 85 fonts, out of 3000000 for 9000
+ 4264 strings out of 495061
+ 54797 string characters out of 1182621
+ 114863 words of memory out of 3000000
+ 7318 multiletter control sequences out of 15000+50000
+ 37298 words of font info for 86 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  35i,7n,24p,1401b,589s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type
-1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmtt10.pfb>
-Output written on memoria.pdf (13 pages, 306787 bytes).
+ </home/mingot/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmtt10.pfb>
+Output written on memoria.pdf (15 pages, 354308 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
+ 151 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 40 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

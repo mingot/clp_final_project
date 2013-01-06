@@ -171,15 +171,15 @@ Presentem aquí els resutlats de l'entrenament de l'entrenament de les Xarxes Ne
 Per entrenar les xarxes neuronals hem canviat una mica el nostre marc de treball format, fins ara, per un conjunt d'entrenament i un de test. Degut a que les xarxes neuronals tenen una dependència elevada amb els seus valors inicials, hem optat per usar la tècnica de la validació creuada \textit{k-fold}. Aquesta tècnica consisteix en partir el conjunt total de dades en $k$ parts. Aleshores, s'entrena el classificador en $k-1$ i s'evalua en la restant. D'aquesta manera és pot usar el mateix conjunt de dades per obtenir fins a $k$ mesures de l'error sobre un conjunt de test. Respecte l'entrenament de les xarxes, hem seguit la filosofia general suggerida a \cite{hastie09}. Allí se'ns proposa entrenar les xarxes neuronals amb només una capa oculta. Per seleccionar el nombre de unitats d'aquesta capa, s'introdueix un terme de regularització (\textit{shrinkage}) que ens penalitza tenir molts paràmetres. Així doncs, la metodologia usada ha estat entrenar les xarxes amb 8 unitats imaginàries i determinar per validació creuada el valor òptim del terme de penalització. Aquest parametre regularitzador ja se n'encarregarà de posar a 0 les neurones de la cap intermitja que facin falta. 
 \\
 \\
-En la figura \ref{fig:nn_regular} podem observar com varia l'error en el conjunt de test (mitja dels $k$ entrenaments) en funció del terme de regularització. En totes elles estem usant 8. Després de diverses execucions probant diferents valors, obtenim que l'ordre de magnitud del valor òptim és 1. Per aquests paràmetres descrits podem observar en la figura \ref{fig:nn_roc} la curva ROC per les diferents realitzacions de \textit{5-fold} validació creuada. Obtenim una mitja de 0.85 per l'AUC.
+En la figura \ref{fig:nn_regular} podem observar com varia l'error en el conjunt de test (mitja dels $k$ entrenaments) en funció del terme de regularització. En totes elles estem usant 8. Després de diverses execucions probant diferents valors, obtenim que l'ordre de magnitud del valor òptim és $10^{-2}$. Per aquests paràmetres descrits podem observar en la figura \ref{fig:nn_roc} la curva ROC per les diferents realitzacions de \textit{5-fold} validació creuada. Obtenim una mitja de 0.80 per l'AUC. Pel que fa a l'error comés l'òptim descrit obtenim 0.141 que és lleugerament més elevat que en LDA. 
 \\
 \\
-Finalment i paral·lelament al que hem estat fent amb els altres classificadors anem a estudiar com es comporten les xarxes neuronals en funció 
-[Selecció i projecció de variables]
+Finalment i paral·lelament al que hem estat fent amb els altres classificadors anem a estudiar com es comporten les xarxes neuronals en funció de les variables usades. En aquest cas només mirarem l'evolució de l'error en les NN en funció del nombre de components principals usades (provinents de la projecció PCA) i en compararem el resultat amb usar totes les variables. En la figura \ref{fig:nn_princomp} podem veure l'error en el conjunt de test (després de passar per validació creuada 5-\textit{fold}) en funció del nombre de components principals usades. Podem veure que amb 7 components principals ja obtenim un error de 0.16, molt pròxim al obtingut amb les xarxes neuronals amb totes les variables (91!).
+
 
 
 <<fig=TRUE,echo=FALSE, include=FALSE, label=nn_regular>>=
-plot(log10(x.lab), err.reg, type="l", xlab="log(param_reg)", ylab="error")
+plot(log10(dec.vec), err.reg, xlab="log(param_reg)", ylab="error", type="l")
 @
 \begin{center}
 \begin{figure}
@@ -197,6 +197,17 @@ plot(perf, colorize=TRUE)
 \caption{Curves ROC per la NN amb 8 neurones en capa oculat, amb un terme de regularizació de 0.05. S'obté una AUC mitja de 0.85.} \label{fig:nn_roc}
 \end{figure}
 \end{center}
+
+<<fig=TRUE,echo=FALSE, include=FALSE, label=nn_princomp>>=
+plot(ncomp.vec, err.comp, type="l", xlab="nombre de components principals", ylab="error")
+@
+\begin{center}
+\begin{figure}
+\includegraphics[width=5in]{memoria-nn_princomp}
+\caption{Evolució de l'error en el conjunt de test en funció del nombre de components principals usades.} \label{fig:nn_roc}
+\end{figure}
+\end{center}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Arbres}
 \subsection{Random Forest (opcional)}

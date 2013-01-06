@@ -22,7 +22,7 @@ feat_names_short = feat_names_short[1:(length(feat_names_short)-1)]
 f_pe[f_pe$label!=0,"label"] = 1 # posem labels a 1 de cada candidat
 f_pe$label = factor(f_pe$label) # fiquem com a factor
 
-
+data.df = f_pe
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Noms de grups de variables
@@ -79,7 +79,7 @@ corFeat9 = findCorrelation(cor(dat), cutoff=0.9, verbose=FALSE) + 1
 corFeat8 = findCorrelation(cor(dat), cutoff=0.85, verbose=FALSE) + 1
 train.df = train.df[,-corFeat8]
 test.df = test.df[,-corFeat8]
-
+data.df = data.df[,-corFeat8]
 
 # Visualització de la matriu d'autocorrelacio
 plot.sociomatrix(cor(f_pe[,-c(1,corFeat9)]), drawlab=FALSE, diaglab=FALSE)
@@ -88,3 +88,12 @@ plot.sociomatrix(cor(f_pe[,-c(1,corFeat9)]), drawlab=FALSE, diaglab=FALSE)
 var_num = 61
 corMat = cor(dat)
 corMat[which(abs(corMat[,var_num-1])>0.9),var_num-1]
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Other preprocessing
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#scaling position
+train.df[,c("y","z")] = scale(train.df[,c("y","z")])
+test.df[,c("y","z")] = scale(test.df[,c("y","z")])
+data.df[,c("y","z")] = scale(data.df[,c("y","z")])
