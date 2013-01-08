@@ -10,6 +10,6 @@ plot(apply(pe.pca$scores[,1:20],2,sd), xlab="Component", ylab="Standard Deviatio
 # Plot del ggpairs de les n components principals 
 n = 4
 data_pca.df = f_pe
-data_pca.df[,-c(1:4)] = pe.pca$scores 
+data_pca.df[,-c(1:4)] = pe.pca$scores # AQUI ES ON QUEDEN GUARDADES LES PROJECCIONS!
 names(data_pca.df)[5:ncol(data_pca.df)] = paste("comp", 1:(ncol(data_pca.df)-4), sep="")
 ggpairs(data_pca.df[,c(1,2:4,5:(5+n))], colour="label")
